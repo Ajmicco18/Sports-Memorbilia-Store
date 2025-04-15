@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Apparel from "./pages/Apparel";
@@ -14,61 +15,15 @@ import Register from "./pages/Auth/Register"
 import Shipping from "./pages/Shipping";
 import ShoppingCart from "./pages/ShoppingCart";
 import TradingCards from "./pages/TradingCards";
+import { NavBar } from "./components/navigation/Nav";
+import { Footer } from './components/navigation/FooterComponent';
 import "./index.css"
 
 function App() {
 
   return (
     <>
-      <div>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/auth/login">Login</a>
-          </li>
-          <li>
-            <a href="/auth/register">Register</a>
-          </li>
-          <li>
-            <a href="/profile">Profile</a>
-          </li>
-          <li>
-            <a href="/memorabilia">Memorabilia</a>
-          </li>
-          <li>
-            <a href="/jerseys">Jerseys</a>
-          </li>
-          <li>
-            <a href="/apparel">Apparel</a>
-          </li>
-          <li>
-            <a href="/trading-cards">Trading Cards</a>
-          </li>
-          <li>
-            <a href="/cart">Shopping Cart</a>
-          </li>
-          <li>
-            <a href="/shipping">Shipping</a>
-          </li>
-          <li>
-            <a href="/payment">Payment</a>
-          </li>
-          <li>
-            <a href="/confirmation">Confirmation</a>
-          </li>
-          <li>
-            <a href="/help">Help</a>
-          </li>
-          <li>
-            <a href="/contact-us">Contact Us</a>
-          </li>
-          <li>
-            <a href="/about-us">About Us</a>
-          </li>
-        </ul>
-      </div>
+      <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth/login" element={<Login />} />
@@ -86,6 +41,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
       </Routes>
+      <Footer></Footer>
     </>
   )
 }
