@@ -16,7 +16,16 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import sportsSiteLogo from "../../assets/images/sportsSiteLogo.png"
 
-const pages = [
+const menuPages = [
+    { title: "Jerseys", url: "/jerseys" },
+    { title: "Apparel", url: "/apparel" },
+    { title: "Memorabilia", url: "/memorabilia" },
+    { title: "Trading Cards", url: "/trading-cards" },
+    { title: "Shopping Cart", url: "/cart" },
+    { title: "Profile", url: "/profile" }
+]
+
+const navPages = [
     { title: "Jerseys", url: "/jerseys" },
     { title: "Apparel", url: "/apparel" },
     { title: "Memorabilia", url: "/memorabilia" },
@@ -50,7 +59,7 @@ export const NavBar = () => {
                             }}
                         />
                     </Link>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -77,42 +86,34 @@ export const NavBar = () => {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            {pages.map((page, index) => (
+                            {menuPages.map((page, index) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                                     <Typography component={"a"} sx={{ textAlign: 'center', textDecoration: "none", color: "black" }} href={page.url}>{page.title}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-                    <Link to="/">
-                        <Box
-                            component="img"
-                            src={sportsSiteLogo}
-                            sx={{
-                                display: { xs: 'flex', md: 'none' },
-                                width: 150,
-                                height: 150,
-                                mr: 1,
-                            }}
-                        />
-                    </Link>
-                    <Typography
-                        variant="h5"
-                        noWrap
+                    <Box
                         sx={{
-                            mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
+                            justifyContent: 'center',
+                            alignItems: 'center',
                         }}
                     >
-                    </Typography>
+                        <Link to="/">
+                            <Box
+                                component="img"
+                                src={sportsSiteLogo}
+                                sx={{
+                                    width: 150,
+                                    height: 150,
+                                }}
+                            />
+                        </Link>
+                    </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center", alignItems: "center" }}>
-                        {pages.map((page, index) => (
+                        {navPages.map((page, index) => (
                             <Button
                                 key={index}
                                 href={page.url}
@@ -123,7 +124,7 @@ export const NavBar = () => {
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }} >
                         <IconButton
                             size="large"
                             aria-label="user's shopping cart"
