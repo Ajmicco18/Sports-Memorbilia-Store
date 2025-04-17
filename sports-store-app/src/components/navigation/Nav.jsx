@@ -47,6 +47,7 @@ export const NavBar = () => {
         <AppBar position='static'>
             <Container maxWidth="xl" sx={{ backgroundColor: "#FFFDD0" }}>
                 <Toolbar disableGutters>
+                    {/*Site Logo Link on Larger Screen*/}
                     <Link to={"/"}>
                         <Box
                             component="img"
@@ -59,6 +60,7 @@ export const NavBar = () => {
                             }}
                         />
                     </Link>
+                    {/*Menu Content for smaller screens*/}
                     <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -93,6 +95,7 @@ export const NavBar = () => {
                             ))}
                         </Menu>
                     </Box>
+                    {/*Site Logo Link on Smaller Screen*/}
                     <Box
                         sx={{
                             display: { xs: 'flex', md: 'none' },
@@ -112,6 +115,7 @@ export const NavBar = () => {
                             />
                         </Link>
                     </Box>
+                    {/*Page Nav Links for Larger Screens*/}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center", alignItems: "center" }}>
                         {navPages.map((page, index) => (
                             <Button
@@ -124,6 +128,7 @@ export const NavBar = () => {
                             </Button>
                         ))}
                     </Box>
+                    {/*Shopping Cart and Account Icons for Larger Screens*/}
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }} >
                         <IconButton
                             size="large"

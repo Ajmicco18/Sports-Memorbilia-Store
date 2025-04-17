@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 
 export default function Register() {
+    {/*Registration Variables*/ }
     const [fName, setFName] = React.useState("")
     const [lName, setLName] = React.useState("")
     const [email, setEmail] = React.useState("")
@@ -21,6 +22,7 @@ export default function Register() {
     const [password, setPassword] = React.useState("")
     const [confirmPass, setConfirmPass] = React.useState("")
 
+    {/*Submission Function*/ }
     const handleSubmit = () => {
         setFName("")
         setLName("")
@@ -42,6 +44,7 @@ export default function Register() {
                 justifyContent={"center"}
                 alignItems={"center"} >
                 <Typography variant='h4' textAlign={"center"} color='white'>Register</Typography>
+                {/*First Name Field*/}
                 <TextField
                     variant='outlined'
                     value={fName}
@@ -55,7 +58,7 @@ export default function Register() {
                             "&.Mui-focused": { color: "#E81828" }
                         },
 
-                        // 2) style the input wrapper
+                        //style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
@@ -76,6 +79,7 @@ export default function Register() {
                     }}
                 >
                 </TextField>
+                {/*Last Name Field*/}
                 <TextField
                     variant='outlined'
                     value={lName}
@@ -89,7 +93,7 @@ export default function Register() {
                             "&.Mui-focused": { color: "#E81828" }
                         },
 
-                        // 2) style the input wrapper
+                        // style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
@@ -110,6 +114,7 @@ export default function Register() {
                     }}
                 >
                 </TextField>
+                {/*Email Field*/}
                 <TextField
                     variant='outlined'
                     value={email}
@@ -124,7 +129,7 @@ export default function Register() {
                             "&.Mui-focused": { color: "#E81828" }
                         },
 
-                        // 2) style the input wrapper
+                        //style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
@@ -144,6 +149,7 @@ export default function Register() {
                         }
                     }} >
                 </TextField>
+                {/*Phone Number Field*/}
                 <TextField
                     variant='outlined'
                     value={phone}
@@ -158,7 +164,7 @@ export default function Register() {
                             "&.Mui-focused": { color: "#E81828" }
                         },
 
-                        // 2) style the input wrapper
+                        //style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
@@ -178,6 +184,7 @@ export default function Register() {
                         }
                     }} >
                 </TextField>
+                {/*Text and Email Alert Fields*/}
                 <Box sx={{ alignSelf: "center", ml: 1 }}>
                     <Stack direction="column">
                         <FormControlLabel
@@ -190,6 +197,7 @@ export default function Register() {
                             sx={{ color: "white" }} />
                     </Stack>
                 </Box>
+                {/*Password Field*/}
                 <TextField
                     variant='outlined'
                     value={password}
@@ -204,7 +212,7 @@ export default function Register() {
                             "&.Mui-focused": { color: "#E81828" }
                         },
 
-                        // 2) style the input wrapper
+                        //style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
@@ -224,6 +232,7 @@ export default function Register() {
                         }
                     }} >
                 </TextField>
+                {/*Confirm Password Field which conditionally renders an error if it doesn't match password*/}
                 {confirmPass !== password ?
                     <TextField
                         variant='outlined'
@@ -240,7 +249,7 @@ export default function Register() {
                                 "&.Mui-focused": { color: "#E81828" }
                             },
 
-                            // 2) style the input wrapper
+                            // style the input wrapper
                             "& .MuiOutlinedInput-root": {
                                 backgroundColor: "white",
                                 color: "#E81828",
@@ -274,7 +283,7 @@ export default function Register() {
                                 "&.Mui-focused": { color: "#E81828" }
                             },
 
-                            // 2) style the input wrapper
+                            // style the input wrapper
                             "& .MuiOutlinedInput-root": {
                                 backgroundColor: "white",
                                 color: "#002D72",
@@ -294,9 +303,11 @@ export default function Register() {
                             }
                         }} >
                     </TextField>}
+                {/*Submission Button*/}
                 <Button onClick={handleSubmit} sx={{ minWidth: "150px", backgroundColor: "#E81828", borderRadius: 2, color: "white", "&:hover": { backgroundColor: "white", color: "#E81828" } }}>
                     Submit
                 </Button>
+                {/*Existing Account Text and Link to Login Page*/}
                 <Typography variant='p' textAlign={"center"} color='white'>
                     Already have an account? {""}
                     <Link
