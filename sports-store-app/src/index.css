@@ -2,6 +2,10 @@
     background-color: #FFFDD0;
 }
 
+body {
+    margin: 0;
+}
+
 .hero {
     position: relative;
     height: 300px;
@@ -21,4 +25,13 @@
     bottom: 0px;
     left: 0px;
     opacity: 0.65;
+}
+
+.contactLink {
+    color: #E81828;
+    text-decoration: none;
+}
+
+.contactLink:hover {
+    color: #002D72;
 }

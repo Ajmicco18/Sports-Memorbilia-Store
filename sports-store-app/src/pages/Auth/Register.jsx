@@ -239,7 +239,7 @@ export default function Register() {
                         value={confirmPass}
                         onChange={(event) => setConfirmPass(event.target.value)}
                         label="Confirm Password"
-                        placeholder=''
+                        placeholder='Confirm Password'
                         required
                         type='password'
                         error
@@ -274,7 +274,7 @@ export default function Register() {
                         value={confirmPass}
                         onChange={(event) => setConfirmPass(event.target.value)}
                         label="Confirm Password"
-                        placeholder=''
+                        placeholder='Confirm Password'
                         type='password'
                         required
                         sx={{
