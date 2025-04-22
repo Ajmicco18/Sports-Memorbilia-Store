@@ -11,6 +11,10 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import LocationPinIcon from '@mui/icons-material/LocationPin';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import FastRewindIcon from '@mui/icons-material/FastRewind';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export default function Help() {
     const [expanded, setExpanded] = React.useState('panel1');
@@ -59,14 +63,15 @@ export default function Help() {
     return (
         <Container maxWidth="xl" sx={{ marginTop: 2 }}>
             <Typography variant='h4' sx={{ textDecoration: "underline" }} color='#E81828' textAlign={"center"}>How Can We Help You?</Typography>
-            <Box display={"flex"} flexDirection={"row"} flexWrap={"wrap"} justifyContent={"center"} alignItems={"center"} justifySelf={"center"} width={"85%"} marginTop={2}>
+            <Box display={"flex"} flexDirection={{ xs: "column", md: "row" }} justifyContent={"center"} alignItems={"center"} justifySelf={"center"} width={"85%"} marginTop={2}>
                 {/*Help Information Column 1 */}
-                <Box width={"45%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} margin={"auto"}>
+                <Box width={{ xs: "100%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} margin={"auto"}>
 
                     {/*Shipping and Handling Content */}
                     <Box width={"100%"} marginTop={2}>
                         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                                <LocationPinIcon sx={{ color: "white", marginRight: "10px" }} />
                                 <Typography color="white" component="span">Shipping and Handling</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -88,6 +93,7 @@ export default function Help() {
                     <Box width={"100%"} marginTop={2}>
                         <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                             <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                                <FastRewindIcon sx={{ color: "white", marginRight: "10px" }} />
                                 <Typography color="white" component="span">Returns</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -107,12 +113,12 @@ export default function Help() {
                 </Box>
 
                 {/*Help Information Column 2 */}
-                <Box width={"45%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} margin={"auto"}>
-
+                <Box width={{ xs: "100%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} margin={"auto"}>
                     {/*Payment Options Content */}
                     <Box width={"100%"} marginTop={2}>
                         <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                             <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+                                <AttachMoneyIcon sx={{ color: "white", marginRight: "10px" }} />
                                 <Typography color="white" component="span">Payment Options</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -133,6 +139,7 @@ export default function Help() {
                     <Box width={"100%"} marginTop={2}>
                         <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                             <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+                                <AssignmentIcon sx={{ color: "white", marginRight: "10px" }} />
                                 <Typography color="white" component="span">Product Details</Typography>
                             </AccordionSummary>
                             <AccordionDetails>

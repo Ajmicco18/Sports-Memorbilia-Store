@@ -30,10 +30,12 @@ export default function Profile() {
 
     }
 
+    //Need a getUser API call
+
     return (
         <Container maxWidth="xl" sx={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: 4 }}>
             {isEdit ? <Box
-                minWidth={400}
+                width={400}
                 display={"flex"}
                 flexDirection={"column"}
                 sx={{ gap: 2, padding: "10px", borderRadius: 2 }}
@@ -48,6 +50,7 @@ export default function Profile() {
                     onChange={(event) => setName(event.target.value)}
                     label="Name"
                     placeholder='Name'
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -75,7 +78,7 @@ export default function Profile() {
                     }}
                 >
                 </TextField>
-                {/*Last Name Field*/}
+                {/*Email Field*/}
                 <TextField
                     variant='outlined'
                     value={email}
@@ -83,6 +86,7 @@ export default function Profile() {
                     label="Email"
                     placeholder='Email'
                     type='email'
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -119,6 +123,7 @@ export default function Profile() {
                     label="Phone Number"
                     placeholder='(123)-456-7890'
                     type='phone'
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -145,39 +150,31 @@ export default function Profile() {
                         }
                     }} >
                 </TextField>
-                {/*Email Field*/}
+                {/*Birthday Field*/}
                 <TextField
-                    variant='outlined'
-                    value={birthday}
-                    onChange={(event) => setBirthday(event.target.value)}
+                    fullWidth
+                    variant="outlined"
                     label="Birthday"
-                    placeholder='Birthday'
+                    type="date"
+                    value={birthday}
+                    onChange={e => setBirthday(e.target.value)}
+                    InputLabelProps={{
+                        shrink: true
+                    }}
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
                             "&.Mui-focused": { color: "#E81828" }
                         },
-
-                        //style the input wrapper
                         "& .MuiOutlinedInput-root": {
                             backgroundColor: "white",
                             color: "#002D72",
-
-                            // default border
-                            "& fieldset": {
-                                borderColor: "#002D72"
-                            },
-                            // on hover
-                            "&:hover fieldset": {
-                                borderColor: "#E81828"
-                            },
-                            // when focused
-                            "&.Mui-focused fieldset": {
-                                borderColor: "#E81828"
-                            }
+                            "& fieldset": { borderColor: "#002D72" },
+                            "&:hover fieldset": { borderColor: "#E81828" },
+                            "&.Mui-focused fieldset": { borderColor: "#E81828" }
                         }
-                    }} >
-                </TextField>
+                    }}
+                />
                 {/*Text and Email Alert Fields*/}
                 <Box sx={{ alignSelf: "center", ml: 1 }}>
                     <Stack direction="row">
@@ -193,11 +190,11 @@ export default function Profile() {
                 </Box>
                 {/*Submission Button*/}
                 <Button onClick={handleSubmit} sx={{ minWidth: "150px", backgroundColor: "#E81828", borderRadius: 2, color: "white", "&:hover": { backgroundColor: "#002D72" } }}>
-                    Submit
+                    Save
                 </Button>
             </Box> :
                 <Box
-                    minWidth={400}
+                    width={400}
                     display={"flex"}
                     flexDirection={"column"}
                     sx={{ gap: 2, padding: "10px", borderRadius: 2 }}
@@ -213,6 +210,7 @@ export default function Profile() {
                         label="Name"
                         placeholder='Name'
                         disabled
+                        fullWidth
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",
@@ -240,7 +238,7 @@ export default function Profile() {
                         }}
                     >
                     </TextField>
-                    {/*Last Name Field*/}
+                    {/*Email Field*/}
                     <TextField
                         variant='outlined'
                         value={email}
@@ -249,6 +247,7 @@ export default function Profile() {
                         placeholder='Email'
                         type='email'
                         disabled
+                        fullWidth
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",
@@ -286,6 +285,7 @@ export default function Profile() {
                         placeholder='(123)-456-7890'
                         type='phone'
                         disabled
+                        fullWidth
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",
@@ -312,40 +312,32 @@ export default function Profile() {
                             }
                         }} >
                     </TextField>
-                    {/*Email Field*/}
+                    {/*Birthday Field*/}
                     <TextField
-                        variant='outlined'
-                        value={birthday}
-                        onChange={(event) => setBirthday(event.target.value)}
+                        fullWidth
+                        variant="outlined"
                         label="Birthday"
-                        placeholder='Birthday'
+                        type="date"
+                        value={birthday}
+                        onChange={e => setBirthday(e.target.value)}
                         disabled
+                        InputLabelProps={{
+                            shrink: true
+                        }}
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",
                                 "&.Mui-focused": { color: "#E81828" }
                             },
-
-                            //style the input wrapper
                             "& .MuiOutlinedInput-root": {
                                 backgroundColor: "white",
                                 color: "#002D72",
-
-                                // default border
-                                "& fieldset": {
-                                    borderColor: "#002D72"
-                                },
-                                // on hover
-                                "&:hover fieldset": {
-                                    borderColor: "#E81828"
-                                },
-                                // when focused
-                                "&.Mui-focused fieldset": {
-                                    borderColor: "#E81828"
-                                }
+                                "& fieldset": { borderColor: "#002D72" },
+                                "&:hover fieldset": { borderColor: "#E81828" },
+                                "&.Mui-focused fieldset": { borderColor: "#E81828" }
                             }
-                        }} >
-                    </TextField>
+                        }}
+                    />
                     {/*Text and Email Alert Fields*/}
                     <Box sx={{ alignSelf: "center", ml: 1 }}>
                         <Stack direction="row">

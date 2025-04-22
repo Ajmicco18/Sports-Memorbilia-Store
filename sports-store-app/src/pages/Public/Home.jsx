@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography } from '@mui/material'
 import React from 'react'
-import { ProductCards } from '../../components/products/productCard'
+import { ProductCards } from '../../components/products/ProductCard'
 import bonds from "../../assets/images/bonds.png"
 import ohtani from "../../assets/images/ohtani.png"
 import ohioState from "../../assets/images/ohioState.png"

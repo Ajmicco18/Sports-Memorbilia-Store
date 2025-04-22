@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { ProductCards } from '../../components/products/productCard'
+import { ProductCards } from '../../components/products/ProductCard'
 import { Box, Container, Typography } from '@mui/material'
 import bonds from "../../assets/images/bonds.png"
 import ohtani from "../../assets/images/ohtani.png"
@@ -13,6 +13,7 @@ export default function TradingCards() {
     { price: "$40.00", description: "Nike Golden State Warriors Hoodie", imgUrl: warriors, productUrl: "/apparel/2" },
     ]
 
+    // need getProducts API call 
     return (
         <Container maxWidth="xl" sx={{ mt: 2 }}>
             <Typography variant='h4' sx={{ textDecoration: "underline" }} color='#E81828' textAlign={"center"}>Trading Cards</Typography>

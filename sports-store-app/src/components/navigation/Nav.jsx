@@ -116,13 +116,13 @@ export const NavBar = () => {
                         </Link>
                     </Box>
                     {/*Page Nav Links for Larger Screens*/}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center", alignItems: "center" }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: 3, justifyContent: "center", alignItems: "center" }}>
                         {navPages.map((page, index) => (
                             <Button
                                 key={index}
                                 href={page.url}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: '#E81828', display: 'block', "&:hover": { backgroundColor: "#E81828", color: "white" } }}
+                                sx={{ my: 2, color: '#E81828', display: 'block', padding: "10px", "&:hover": { backgroundColor: "#E81828", color: "white" } }}
                             >
                                 {page.title}
                             </Button>

@@ -18,10 +18,12 @@ export default function Login() {
         setPassword('')
     }
 
+    //Need a login and logout API call
+
     return (
         <Container maxWidth="xl" sx={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: 4 }}>
             <Box
-                minWidth={400}
+                width={400}
                 display={"flex"}
                 flexDirection={"column"}
                 sx={{ gap: 2, backgroundColor: "#002D72", padding: "10px", borderRadius: 2 }}
@@ -38,6 +40,7 @@ export default function Login() {
                     placeholder='Email'
                     required
                     type='email'
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -75,6 +78,7 @@ export default function Login() {
                     placeholder='Password'
                     required
                     type='password'
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",

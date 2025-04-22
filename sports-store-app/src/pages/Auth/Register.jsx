@@ -33,11 +33,12 @@ export default function Register() {
         setPassword("")
         setConfirmPass("")
     }
+    //Need a register API
 
     return (
         <Container maxWidth="xl" sx={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: 4 }}>
             <Box
-                minWidth={400}
+                width={400}
                 display={"flex"}
                 flexDirection={"column"}
                 sx={{ gap: 2, backgroundColor: "#002D72", padding: "10px", borderRadius: 2 }}
@@ -52,6 +53,7 @@ export default function Register() {
                     label="First Name"
                     placeholder='First Name'
                     required
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -87,6 +89,7 @@ export default function Register() {
                     label="Last Name"
                     placeholder='Last Name'
                     required
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -123,6 +126,7 @@ export default function Register() {
                     placeholder='Email'
                     type='email'
                     required
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -158,6 +162,7 @@ export default function Register() {
                     placeholder='(123)-456-7890'
                     type='phone'
                     required
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -206,6 +211,7 @@ export default function Register() {
                     placeholder='Password'
                     type='password'
                     required
+                    fullWidth
                     sx={{
                         "& .MuiInputLabel-root": {
                             color: "#E81828",
@@ -243,6 +249,7 @@ export default function Register() {
                         required
                         type='password'
                         error
+                        fullWidth
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",
@@ -277,6 +284,7 @@ export default function Register() {
                         placeholder='Confirm Password'
                         type='password'
                         required
+                        fullWidth
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: "#E81828",

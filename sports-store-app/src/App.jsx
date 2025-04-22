@@ -10,7 +10,7 @@ import Jerseys from "./pages/Store/Jerseys";
 import Login from "./pages/Auth/Login";
 import Memorabilia from "./pages/Store/Memorabilia";
 import Payment from "./pages/Checkout/Payment";
-import { ProductPages } from './pages/Store/ProductPage';
+import ProductPages from './pages/Store/ProductPage';
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Auth/Register"
 import Shipping from "./pages/Checkout/Shipping";
