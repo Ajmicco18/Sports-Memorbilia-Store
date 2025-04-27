@@ -9,11 +9,15 @@ by Anthony Micco
 
 ## [Installation](#installation)
 
-**Copy contents of .env.example to an .env file:**
-```cp .env.example .env.local```
+**Copy contents of .env.example to an .env file:**\
+```
+cp .env.example .env.local
+```
 
-To run the project, you need to install the dependencies and packages: 
-```npm install```
+To run the project, you need to install the dependencies and packages: \
+```
+npm install
+```
 
 ## [Running the Project](#running-the-project)
 To start the project, run: 
