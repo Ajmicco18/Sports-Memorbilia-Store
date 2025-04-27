@@ -3,8 +3,8 @@
 by Anthony Micco
 
 ## [Project Layout](#project-layout) 
-- [Sports Store API](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/README.md)
-- [Sports Store App](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/sports-store-app/README.md)
+- [Sports Store API](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/README.md): Used a Laravel backend with PHP and MySQL to implement the backend.
+- [Sports Store App](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/sports-store-app/README.md): Used a React Vite framework to develop the frontend. 
 
 ## [Sports Memorabilia Store API](#sports-memorabilia-store-api)
 - I used the Laravel framework for the API because it provided an excellent template to use for creating a functional backend with PHP and MySQL.
@@ -39,8 +39,7 @@ familiar and comfortable working with it.
 
 ## [Challenges Faced](#challenges-faced)
 - One of the main challenges I faced was initially determining what PHP framework to use that would integrate well with Vite. After doing some 
-
-    research on popular PHP frameworks used with Vite, I determined Laravel was the best fit for me to use.
+research on popular PHP frameworks used with Vite, I determined Laravel was the best fit for me to use.
 
 - Another challenge I faced was... 
 

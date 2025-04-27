@@ -1,16 +1,23 @@
-# Frontend
+# [Sports Memorabilia Store App](#sports-memorabilia-store-app)
 
-This will be the frontend of my application. I am using a Vite framework with React to develop this.
+The Sports Memorabilia Store App enables users to purchase products. It was developed with Vite and Material UI. 
 
-# React + Vite
+by Anthony Micco
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Prerequisites
+- [Node.js](https://nodejs.org/en/download/)
 
-Currently, two official plugins are available:
+## [Installation](#installation)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Copy contents of .env.example to an .env file**:
+`cp .env.example .env.local`
 
-## Expanding the ESLint configuration
+To run the project, you need to install the dependencies and packages: 
+`npm install`
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## [Running the Project](#running-the-project)
+To start the project, run: 
+`npm run dev`
+> [!NOTE] The project's functionality will be limited if the API is not also run. See the [API Documentation](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/README.md)
+
+
