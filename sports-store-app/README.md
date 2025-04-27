@@ -20,8 +20,10 @@ npm install
 ```
 
 ## [Running the Project](#running-the-project)
-To start the project, run: 
-```npm run dev```
+To start the project, run:  
+```
+npm run dev
+```
 > [!NOTE]
 > The project's functionality will be limited if the API is not also run. See the [API Documentation](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/Backend/README.md)
 
