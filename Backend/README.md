@@ -25,19 +25,19 @@ To set up the Sports Memorabilia Store API, clone the repository and change the 
 git clone https://github.com/Ajmicco18/Sports-Memorbilia-Store.git
 cd backend
 ```
-1. **Copy contents of .env.example to an .env file:**
+1. **Copy contents of .env.example to an .env file:**\
 `cp .env.example .env.local`
 
-2. **Install the dependencies:**
+2. **Install the dependencies:**\
 `composer install`
 
-3. **Generate application key:**
+3. **Generate application key:**\
 `php artisan key:generate`
 
-4. **Run database migration with seeder:**
+4. **Run database migration with seeder:**\
 `php artisan migrate --seed`
 
-5. **Start the local server:**
+5. **Start the local server:**\
 `php artisan serve`
 
    
