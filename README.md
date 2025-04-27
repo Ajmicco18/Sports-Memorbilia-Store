@@ -34,7 +34,7 @@ The application's API uses MySQL and PHP by:
 
 ## [Sports Memorabilia Store App](#sports-memorabilia-store-app)
 
-I used the Vite framework to create the frontend for the Sports Memorabilia Store website because I have worked with Vite before and I was 
+- I used the Vite framework to create the frontend for the Sports Memorabilia Store website because I have worked with Vite before and I was 
 familiar and comfortable working with it. 
 
 ## [Challenges Faced](#challenges-faced)
