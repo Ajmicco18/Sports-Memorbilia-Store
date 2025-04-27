@@ -3,7 +3,7 @@
 by Anthony Micco
 
 ## [Project Layout](#project-layout) 
-- [Sports Store API](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/README.md): Used a Laravel backend with PHP and MySQL to implement the backend.
+- [Sports Store API](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/Backend/README.md): Used a Laravel backend with PHP and MySQL to implement the backend.
 - [Sports Store App](https://github.com/Ajmicco18/Sports-Memorbilia-Store/blob/main/sports-store-app/README.md): Used a React Vite framework to develop the frontend. 
 
 ## [Sports Memorabilia Store API](#sports-memorabilia-store-api)
