@@ -1,8 +1,8 @@
-# [Link Text] (#Sports-Memorbilia-Store)
+# [Sports Memorabilia Store App] (#sports-memorbilia-store)
 
 by Anthony Micco
 
-## [Link Text](#sports-store-app) 
+## [Project Layout](#project-layout) 
 - [backend]
 This is a full-stack project that I created for my E-Commerce Programming Class.
 It will use a React (Vite) framework that uses JavaScript, HTML, and CSS and a PHP backend 
