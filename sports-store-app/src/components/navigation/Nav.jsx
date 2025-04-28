@@ -21,8 +21,7 @@ const menuPages = [
     { title: "Apparel", url: "/apparel" },
     { title: "Memorabilia", url: "/memorabilia" },
     { title: "Trading Cards", url: "/trading-cards" },
-    { title: "Shopping Cart", url: "/cart" },
-    { title: "Profile", url: "/profile" }
+    { title: "Shopping Cart", url: "/cart" }
 ]
 
 const navPages = [
@@ -31,7 +30,7 @@ const navPages = [
     { title: "Memorabilia", url: "/memorabilia" },
     { title: "Trading Cards", url: "/trading-cards" }
 ]
-export const NavBar = () => {
+export const NavBar = ({ isLoggedIn }) => {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -139,15 +138,23 @@ export const NavBar = () => {
                         >
                             <ShoppingCartIcon />
                         </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            href="/profile"
-                            sx={{ backgroundColor: "#E81828", color: "white", "&:hover": { color: "#E81828", backgroundColor: "white" } }}
-                        >
-                            <AccountCircle />
-                        </IconButton>
+                        {isLoggedIn ?
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-haspopup="true"
+                                href="/profile"
+                                sx={{ backgroundColor: "#E81828", color: "white", "&:hover": { color: "#E81828", backgroundColor: "white" } }}
+                            >
+                                <AccountCircle />
+                            </IconButton> :
+                            <Button
+                                href='/auth/login'
+                                sx={{ borderRadius: "10px", backgroundColor: "#E81828", color: "white", "&:hover": { color: "#E81828", backgroundColor: "white" } }}
+                            >
+                                Login
+                            </Button>
+                        }
                     </Box>
                 </Toolbar>
             </Container>

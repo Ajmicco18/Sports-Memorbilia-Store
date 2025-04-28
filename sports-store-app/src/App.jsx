@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "./pages/Public/AboutUs";
 import Apparel from "./pages/Store/Apparel";
@@ -20,23 +21,55 @@ import { NavBar } from "./components/navigation/Nav";
 import { Footer } from './components/navigation/FooterComponent';
 import { Box } from '@mui/material';
 import "./index.css"
+import { useEffect } from "react";
+
+const BASE_URL = import.meta.env.VITE_API_URL
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+  const [productData, setProductData] = React.useState({})
+
+  React.useEffect(() => {
+    function isLoggedIn() {
+      if (localStorage.getItem('token') !== null) {
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+    }
+    isLoggedIn();
+  }, [isLoggedIn])
+
+
+  useEffect(() => {
+    async function getProducts() {
+      try {
+        const response = await axios.get(`${BASE_URL}/products`);
+        console.log(response);
+        console.log(response.data);
+        setProductData(response.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getProducts();
+  }, []);
 
   return (
     <>
       <Box display="flex" flexDirection="column" minHeight={"100vh"}>
-        <NavBar></NavBar>
+        <NavBar isLoggedIn={isLoggedIn}></NavBar>
         <Box sx={{ flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/memorabilia" element={<Memorabilia />} />
-            <Route path="/jerseys" element={<Jerseys />} />
-            <Route path="/trading-cards" element={<TradingCards />} />
-            <Route path="/apparel" element={<Apparel />} />
+            <Route path="/memorabilia" element={<Memorabilia productData={productData} />} />
+            <Route path="/jerseys" element={<Jerseys productData={productData} />} />
+            <Route path="/trading-cards" element={<TradingCards productData={productData} />} />
+            <Route path="/apparel" element={<Apparel productData={productData} />} />
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/payment" element={<Payment />} />

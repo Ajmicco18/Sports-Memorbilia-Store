@@ -11,7 +11,7 @@ use OpenApi\Attributes as OAT;
 #[
     OAT\Info(
         version: '1.0.0',
-        description: "## Introduction\n\n API documentation for PC Parts - REST API starter kit powered by Laravel, OpenAPI, Sanctum.\n\n- [GitHub](https://github.com/NicolasJott/pc-parts)",
+        description: "## Introduction\n\n API documentation for Sports Memorabilia Store - REST API starter kit powered by Laravel, OpenAPI, Sanctum.\n\n- [GitHub](https://github.com/Ajmicco18/Sports-Memorbilia-Store)",
         title: 'PC Parts',
     ),
     OAT\Server(url: 'http://127.0.0.1:8000', description: 'Local API server'),

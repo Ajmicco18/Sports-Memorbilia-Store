@@ -13,8 +13,7 @@ export default function Home() {
     const products = [{ price: "$12.45", description: "Barry Bonds 1986 Rookie Card", imgUrl: bonds, productUrl: "/trading-cards/1" },
     { price: "$99.99", description: "Official Shohei Ohtani Game Jersey", imgUrl: ohtani, productUrl: "/jerseys/1" },
     { price: "$20.00", description: "Anthracite Ohio State Hat", imgUrl: ohioState, productUrl: "/apparel/1" },
-    { price: "$40.00", description: "Nike Golden State Warriors Hoodie", imgUrl: warriors, productUrl: "/apparel/2" },
-    ]
+    { price: "$40.00", description: "Nike Golden State Warriors Hoodie", imgUrl: warriors, productUrl: "/apparel/2" }]
 
     return (
         <Container maxWidth="xl" >

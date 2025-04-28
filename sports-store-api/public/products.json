@@ -1,0 +1,114 @@
+[
+    {
+        "price": 39.99,
+        "category": "Trading-Cards",
+        "product_image": "../../assets/images/bonds.png",
+        "size": "",
+        "description": "Barry Bonds 1986 Rookie Card"
+    },
+    {
+        "price": 19.99,
+        "category": "Trading-Cards",
+        "product_image": "../../assets/images/harper.png",
+        "size": "",
+        "description": "Bryce Harper 2021 Card"
+    },
+    {
+        "price": 99.99,
+        "category": "Trading-Cards",
+        "product_image": "../../assets/images/ruth.png",
+        "size": "",
+        "description": "Babe Ruth 1923 MVP Season Card"
+    },
+    {
+        "price": 10.75,
+        "category": "Trading-Cards",
+        "product_image": "../../assets/images/trout.png",
+        "size": "",
+        "description": "Mike Trout 2022 Opening Day Card"
+    },
+    {
+        "price": 99.99,
+        "category": "Jerseys",
+        "product_image": "../../assets/images/tatum.png",
+        "size": "",
+        "description": "Jayson Tatum Authenticate Statement Jersey"
+    },
+    {
+        "price": 99.99,
+        "category": "Jerseys",
+        "product_image": "../../assets/images/ohtani.png",
+        "size": "",
+        "description": "Official Shohei Ohtani Game Jersey"
+    },
+    {
+        "price": 149.99,
+        "category": "Jerseys",
+        "product_image": "../../assets/images/marino.png",
+        "size": "",
+        "description": "Replica Dan Marino Game Jersey"
+    },
+    {
+        "price": 99.99,
+        "category": "Jerseys",
+        "product_image": "../../assets/images/mccaffrey.png",
+        "size": "",
+        "description": "Official Christian McCaffrey Game Jersey"
+    },
+    {
+        "price": 75.00,
+        "category": "Apparel",
+        "product_image": "../../assets/images/broncos.png",
+        "size": "",
+        "description": "Mitchell & Ness Retro Denver Broncos Jacket"
+    },
+    {
+        "price": 29.99,
+        "category": "Apparel",
+        "product_image": "../../assets/images/ohioState.png",
+        "size": "",
+        "description": "Anthracite Ohio State Hat"
+    },
+    {
+        "price": 34.99,
+        "category": "Apparel",
+        "product_image": "../../assets/images/reds.png",
+        "size": "",
+        "description": "Nike Cincinnati Reds Big Red Machine T-Shirt"
+    },
+    {
+        "price": 69.99,
+        "category": "Apparel",
+        "product_image": "../../assets/images/warriors.png",
+        "size": "",
+        "description": "Nike Golden State Warriors Hoodie"
+    },
+    {
+        "price": 14.99,
+        "category": "Memorabilia",
+        "product_image": "../../assets/images/brewers.png",
+        "size": "",
+        "description": "Milwaukee Brewers' Bernie Brewer Bobblehead"
+    },
+    {
+        "price": 9.99,
+        "category": "Memorabilia",
+        "product_image": "../../assets/images/irish.png",
+        "size": "",
+        "description": "Notre Dame Fighting Irish Mini Alternate Helmet Replica"
+    },
+    {
+        "price": 149.99,
+        "category": "Memorabilia",
+        "product_image": "../../assets/images/rodman.png",
+        "size": "",
+        "description": "Dennis Rodman 2011 Hall of Fame Plaque"
+    },
+    {
+        "price": 7.99,
+        "category": "Memorabilia",
+        "product_image": "../../assets/images/steelers.png",
+        "size": "",
+        "description": "Pittsburgh Steelers Six Time Super Bowl Champion Banner"
+    }
+]

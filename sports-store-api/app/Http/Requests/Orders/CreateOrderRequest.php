@@ -54,14 +54,9 @@ use OpenApi\Attributes as OAT;
             property: 'deliveryAddress',
             properties: [
                 new OAT\Property(
-                    property: 'address1',
+                    property: 'address',
                     type: 'string',
                     example: '123 Easy Street'
-                ),
-                new OAT\Property(
-                    property: 'address2',
-                    type: 'string',
-                    example: 'Apt. 309'
                 ),
                 new OAT\Property(
                     property: 'city',
@@ -113,12 +108,8 @@ class CreateOrderRequest extends FormRequest
                 'required',
                 'array',
             ],
-            'deliveryAddress.address1' => [
+            'deliveryAddress.address' => [
                 'required',
-                'string',
-            ],
-            'deliveryAddress.address2' => [
-                'nullable',
                 'string',
             ],
             'deliveryAddress.city' => [

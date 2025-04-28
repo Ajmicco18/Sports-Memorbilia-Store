@@ -16,16 +16,11 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'model',
         'price',
         'category',
         'product_image',
+        'size',
         'description',
-    ];
-
-    protected $casts = [
-        "specifications" => 'array'
     ];
 
     public function lineItems()

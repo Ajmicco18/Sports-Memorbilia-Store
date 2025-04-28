@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from "axios";
 import {
     Box,
     Button,
@@ -8,17 +9,45 @@ import {
     Typography,
 } from '@mui/material'
 
+const BASE_URL = import.meta.env.VITE_API_URL
+
 export default function Login() {
     {/*Login Variables */ }
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        try {
+
+            const response = await axios.post(`${BASE_URL}/login`, {
+                email: email,
+                password: password
+            })
+            console.log(localStorage.getItem('token'))
+            console.log("API response:", response.data);
+            localStorage.setItem('token', response.data.access_token)
+            window.location.href = "/";
+        }
+        catch (error) {
+            console.error("Error:", error);
+            if (error.response) {
+                if (error.response.status === 401) {
+                    setErrorMessage("Incorrect email or password. Please try again.");
+                } else if (error.response.status === 500) {
+                    setErrorMessage("Server error. Please try again later.");
+                } else {
+                    setErrorMessage("An unexpected error occurred. Please try again.");
+                }
+            } else {
+                setErrorMessage("Unable to connect to the server. Please check your internet connection.");
+            }
+        }
+
         setEmail('')
         setPassword('')
     }
 
-    //Need a login and logout API call
+
 
     return (
         <Container maxWidth="xl" sx={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: 4 }}>

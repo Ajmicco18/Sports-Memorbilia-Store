@@ -78,4 +78,35 @@ class ProductController extends Controller
 
         return Response::json(new ProductResource($product));
     }
+
+    /**
+     * Read by Category
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    #[OAT\Get(
+        path: '/api/products/{category}',
+        operationId: 'ProductController.readByCategory',
+        summary: 'Read products by Category',
+        tags: ['products'],
+        parameters: [
+            new OAT\Parameter(
+                name: 'category',
+                in: 'path',
+                required: true,
+            ),
+        ],
+        responses: [
+            new OAT\Response(
+                response: HttpResponse::HTTP_OK,
+                description: 'Ok',
+                content: new OAT\JsonContent(ref: '#/components/schemas/ProductResourceCollection'),
+            ),
+        ]
+    )]
+    public function readByCategory(string $category): JsonResponse
+    {
+        return Response::json(ProductResource::collection($this->productService->getByCategory($category)));
+    }
 }

@@ -27,7 +27,7 @@ CREATE DATABASE sports_store_db;
 **Creating the user**
 
 ```sql
-CREATE USER 'sports_store'@'localhost' IDENTIFIED BY 'sports_store';
+CREATE USER 'sportsStore'@'localhost' IDENTIFIED BY 'sportsStore';
 ```
 
 **Grant superuser privilege**

@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material"
 export const ProductCards = ({ price, description, imgUrl }) => {
     return (
         <>
-            <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} height={175}
+            <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} height={200}
                 sx={{
                     padding: "5px",
                     border: "2px solid #002D72",
@@ -13,7 +13,7 @@ export const ProductCards = ({ price, description, imgUrl }) => {
 
                 }}>
                 {/*Product Image*/}
-                <Box component="img" src={imgUrl} width={115} height={115} />
+                <Box component="img" src={imgUrl} width={110} height={110} />
 
                 {/*Product Description*/}
                 <Typography variant="p" textAlign={"center"} sx={{ textDecoration: "none", color: "#002D72", marginTop: 2 }}>{description}</Typography>

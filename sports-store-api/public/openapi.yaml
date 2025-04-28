@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: 'PC Parts'
-  description: "## Introduction\n\n API documentation for PC Parts - REST API starter kit powered by Laravel, OpenAPI, Sanctum.\n\n- [GitHub](https://github.com/NicolasJott/pc-parts)"
+  title: 'Sports Memorabilia Store'
+  description: "## Introduction\n\n API documentation for Sports Memorabilia STore - REST API starter kit powered by Laravel, OpenAPI, Sanctum.\n\n- [GitHub](https://github.com/Ajmicco18/Sports-Memorbilia-Store)"
   version: 1.0.0
 servers:
   -
@@ -343,6 +343,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductResourceCollection'
+  '/api/products/{category}':
+    get:
+      tags:
+        - products
+      summary: 'Read products by Category'
+      description: 'Read by Category'
+      operationId: ProductController.readByCategory
+      parameters:
+        -
+          name: category
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceCollection'
   '/api/products/{id}':
     get:
       tags:
@@ -583,19 +602,6 @@ components:
                 example: 'Error message 2'
           type: object
       type: object
-    AdminLoginRequest:
-      required:
-        - email
-        - password
-      properties:
-        email:
-          type: string
-          format: email
-          example: root@admin.com
-        password:
-          type: string
-          example: '123456'
-      type: object
     LoginRequest:
       required:
         - email
@@ -604,27 +610,43 @@ components:
         email:
           type: string
           format: email
-          example: john@example.com
+          example: test@abc.com
         password:
           type: string
-          example: '123456'
+          example: '12345678'
       type: object
     SignupRequest:
       required:
-        - name
+        - first_name
+        - last_name
         - email
+        - phone
+        - text_alerts
+        - email_alerts
         - password
       properties:
-        name:
+        first_name:
           type: string
-          example: 'John Doe'
+          example: 'John'
+        last_name:
+          type: string
+          example: 'Doe'  
         email:
           type: string
           format: email
-          example: john@example.com
+          example: test@abc.com
+        phone:
+          type: string
+          example: 123-456-7890
+        text_alerts:
+          type: boolean
+          example: true
+        email_alerts:
+          type: boolean
+          example: false
         password:
           type: string
-          example: '123456'
+          example: '12345678'
       type: object
     AddCartItemRequest:
       required:
@@ -674,12 +696,9 @@ components:
             type: object
         deliveryAddress:
           properties:
-            address1:
+            address:
               type: string
               example: '123 Easy Street'
-            address2:
-              type: string
-              example: 'Apt. 309'
             city:
               type: string
               example: Youngstown
@@ -699,26 +718,6 @@ components:
         type:
           type: string
           example: bearer
-      type: object
-    AdminResource:
-      properties:
-        id:
-          type: integer
-          example: 1
-        name:
-          type: string
-          example: Admin
-        email:
-          type: string
-          example: root@admin.com
-        avatar_url:
-          type: string
-          example: 'https://someplace.com/avatar'
-          nullable: true
-        created_at:
-          type: string
-          format: date-time
-          example: '2022-08-27T16:14:46.000000Z'
       type: object
     CartItemResource:
       properties:
@@ -759,12 +758,9 @@ components:
       type: object
     DeliveryAddressResource:
       properties:
-        address1:
+        address:
           type: string
           example: '123 Easy Street'
-        address2:
-          type: string
-          example: 'Apt. 309'
         city:
           type: string
           example: Youngstown
@@ -790,13 +786,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/LineItemResource'
-    LoggedInAdminResource:
-      properties:
-        admin:
-          $ref: '#/components/schemas/AdminResource'
-        token:
-          $ref: '#/components/schemas/AccessTokenResource'
-      type: object
     OrderResource:
       properties:
         id:
@@ -832,53 +821,51 @@ components:
         id:
           type: integer
           example: 1
-        name:
-          type: string
-          example: 'AMD - Ryzen 7 7800X3D 8-Core - 16-Thread 4.2 GHz (5.0 GHz Max Boost) Socket AM5 Unlocked Desktop Processor - Black'
-        model:
-          type: string
-          example: 100-100000910WOF
         price:
           type: number
           format: float
-          example: 369
+          example: 99.99
         category:
           type: string
-          example: CPU
+          example: Jerseys
         product_image:
           type: string
-          example: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6537/6537139cv11d.jpg;maxHeight=200;maxWidth=300'
+          example: '../../assets/images/ohtani.png'
+        size:
+          type: string
+          example: xl
         description:
           type: string
-          example: "AMD Ryzen 7 7800X3D The dominant gaming processor with AMD 3D V-Cache technology for even more game performance.  Whatever the setting, whatever the resolution, lead your team to victory with this incredible gaming processor.  Plus, enjoy the benefits of next-gen AMD 3D V-Cache technology for lower latency and even more game performance.\_"
-        specifications:
-          type: array
-          items:
-            type: string
-          example:
-            - 'Socket AM5 (LGA 1718)'
-            - '4.2 gigahertz'
-            - '5 gigahertz'
-            - 8-core
-            - '16'
-            - 'Yes'
-      type: object
+          example: "Official Shohei Ohtani Game Jersey\_"
     ProductResourceCollection:
       type: array
       items:
         $ref: '#/components/schemas/ProductResource'
     UserResource:
       properties:
-        id:
-          type: integer
-          example: 1
-        name:
+       first_name:
           type: string
-          example: 'John Doe'
-        email:
+          example: 'John'
+       last_name:
           type: string
-          example: john@example.com
-        created_at:
+          example: 'Doe'  
+       email:
+          type: string
+          format: email
+          example: test@abc.com
+       phone:
+          type: string
+          example: 123-456-7890
+       text_alerts:
+          type: boolean
+          example: true
+       email_alerts:
+          type: boolean
+          example: false
+       password:
+          type: string
+          example: '12345678'
+       created_at:
           type: string
           format: date-time
           example: '2022-08-27T16:14:46.000000Z'

@@ -11,14 +11,9 @@ use OpenApi\Attributes as OAT;
     schema: 'DeliveryAddressResource',
     properties: [
         new OAT\Property(
-            property: 'address1',
+            property: 'address',
             type: 'string',
             example: '123 Easy Street'
-        ),
-        new OAT\Property(
-            property: 'address2',
-            type: 'string',
-            example: 'Apt. 309'
         ),
         new OAT\Property(
             property: 'city',
@@ -50,8 +45,7 @@ class DeliveryAddressResource extends JsonResource
     public function toArray($request, array $excludeFields = []): array|Arrayable|JsonSerializable
     {
         $data = [
-            'address1' => $this->address1,
-            'address2' => $this->address2,
+            'address' => $this->address,
             'city' => $this->city,
             'state' => $this->state,
             'zipCode' => $this->zipCode,
@@ -62,6 +56,5 @@ class DeliveryAddressResource extends JsonResource
         }
 
         return $data;
-
     }
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from "axios";
 import {
     Box,
     Button,
@@ -22,8 +23,27 @@ export default function Register() {
     const [password, setPassword] = React.useState("")
     const [confirmPass, setConfirmPass] = React.useState("")
 
+    const BASE_URL = import.meta.env.VITE_API_URL
+
     {/*Submission Function*/ }
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post(`${BASE_URL}/signup`, {
+                first_name: fName,
+                last_name: lName,
+                email: email,
+                phone: phone,
+                text_alerts: textAlert,
+                email_alerts: emailAlert,
+                password: password
+            })
+            console.log("API response:", response.data);
+            localStorage.setItem('token', response.data.access_token)
+            window.location.href = "/";
+        }
+        catch (error) {
+            console.error("Error:", error);
+        }
         setFName("")
         setLName("")
         setEmail("")
@@ -33,7 +53,6 @@ export default function Register() {
         setPassword("")
         setConfirmPass("")
     }
-    //Need a register API
 
     return (
         <Container maxWidth="xl" sx={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: 4 }}>

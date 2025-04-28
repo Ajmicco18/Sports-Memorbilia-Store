@@ -56,33 +56,6 @@ class OrderController extends Controller
         return Response::json(new OrderResource($order));
     }
 
-    // /**
-    //  * Read all Orders.
-    //  *
-    //  *
-    //  * @return JsonResponse
-    //  */
-    // #[OAT\Get(
-    //     path: '/api/orders',
-    //     operationId: 'OrderController.readAll',
-    //     summary: 'Read all orders',
-    //     security: [['BearerToken' => []]],
-    //     tags: ['orders'],
-    //     responses: [
-    //         new OAT\Response(
-    //             response: HttpResponse::HTTP_OK,
-    //             description: 'Ok',
-    //             content: new OAT\JsonContent(ref: '#/components/schemas/OrderResourceCollection'),
-    //         ),
-    //     ]
-    // )]
-    // public function readAll(): JsonResponse
-    // {
-    //     $orders = $this->orderService->readAllOrders();
-
-    //     return Response::json(OrderResource::collection($orders));
-    // }
-
     /**
      * Read an Order
      *
@@ -153,7 +126,6 @@ class OrderController extends Controller
         $order = $this->orderService->getSingle($id);
 
         return Response::json(new OrderResource($this->orderService->update($order, $request)));
-
     }
 
     /**
@@ -188,6 +160,5 @@ class OrderController extends Controller
         $this->orderService->delete($order);
 
         return Response::json(null, HttpResponse::HTTP_NO_CONTENT);
-
     }
 }

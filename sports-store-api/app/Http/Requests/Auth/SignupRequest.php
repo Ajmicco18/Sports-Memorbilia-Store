@@ -7,18 +7,38 @@ use OpenApi\Attributes as OAT;
 
 #[OAT\Schema(
     schema: 'SignupRequest',
-    required: ['name', 'email', 'password'],
+    required: ['first_name', 'last_name', 'email', 'phone', 'text_alerts', 'email_alerts', 'password'],
     properties: [
         new OAT\Property(
-            property: 'name',
+            property: 'first_name',
             type: 'string',
-            example: 'John Doe'
+            example: 'John'
+        ),
+        new OAT\Property(
+            property: 'last_name',
+            type: 'string',
+            example: 'Doe'
         ),
         new OAT\Property(
             property: 'email',
             type: 'string',
             format: 'email',
             example: 'john@example.com'
+        ),
+        new OAT\Property(
+            property: 'phone',
+            type: 'string',
+            example: '123-456-7890'
+        ),
+        new OAT\Property(
+            property: 'text_alerts',
+            type: 'boolean',
+            example: true
+        ),
+        new OAT\Property(
+            property: 'email_alerts',
+            type: 'boolean',
+            example: true
         ),
         new OAT\Property(
             property: 'password',
@@ -47,7 +67,12 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
+
+            'first_name' => [
+                'required',
+                'string',
+            ],
+            'last_name' => [
                 'required',
                 'string',
             ],
@@ -55,6 +80,18 @@ class SignupRequest extends FormRequest
                 'required',
                 'email',
                 'unique:App\Models\User,email',
+            ],
+            'phone' => [
+                'required',
+                'string',
+            ],
+            'text_alerts' => [
+                'required',
+                'boolean',
+            ],
+            'email_alerts' => [
+                'required',
+                'boolean',
             ],
             'password' => [
                 'required',
