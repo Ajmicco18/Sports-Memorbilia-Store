@@ -1,0 +1,897 @@
+openapi: 3.0.0
+info:
+  title: 'PC Parts'
+  description: "## Introduction\n\n API documentation for PC Parts - REST API starter kit powered by Laravel, OpenAPI, Sanctum.\n\n- [GitHub](https://github.com/NicolasJott/pc-parts)"
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+    description: 'Local API server'
+paths:
+  /api/signup:
+    post:
+      tags:
+        - auth
+      summary: 'Signup a user'
+      description: 'Signup a user.'
+      operationId: AuthController.signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResource'
+        '422':
+          description: 'Unprocessable entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+  /api/login:
+    post:
+      tags:
+        - auth
+      summary: 'Login a user'
+      description: 'Login a user.'
+      operationId: AuthController.login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResource'
+        '422':
+          description: 'Unprocessable entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: 'Invalid credentials.' }
+                type: object
+  /api/logout:
+    post:
+      tags:
+        - auth
+      summary: 'Logout a user'
+      description: 'Logout a user.'
+      operationId: AuthController.logout
+      responses:
+        '204':
+          description: 'No content'
+      security:
+        -
+          BearerToken: []
+  /api/cart:
+    get:
+      tags:
+        - cart
+      summary: 'Get a cart'
+      description: 'Get a cart'
+      operationId: CartController.getCart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResource'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+    post:
+      tags:
+        - cart
+      summary: 'Create a new cart'
+      description: 'create a cart'
+      operationId: CartController.createCart
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResource'
+        '422':
+          description: 'Unprocessable entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+    delete:
+      tags:
+        - cart
+      summary: 'Clear cart'
+      description: 'Clear cart'
+      operationId: CartController.clearCart
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+  /api/cart/item:
+    post:
+      tags:
+        - cart
+      summary: 'Add item to cart'
+      description: 'Add item to cart'
+      operationId: CartController.addCartItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartItemRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemResource'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+  '/api/cart/item/{id}':
+    get:
+      tags:
+        - cart
+      summary: 'Get cart item by id'
+      description: 'Get cart item'
+      operationId: CartController.getCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemResource'
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+    put:
+      tags:
+        - cart
+      summary: 'Update cart item'
+      description: 'Update cart item'
+      operationId: CartController.updateCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+        -
+          name: method
+          in: query
+          required: true
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+    delete:
+      tags:
+        - cart
+      summary: 'Remove item from cart'
+      description: 'Remove item from cart'
+      operationId: CartController.removeCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+  /api/orders:
+    post:
+      tags:
+        - orders
+      summary: 'Create order'
+      description: 'Create an Order.'
+      operationId: OrderController.create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+  '/api/orders/{id}':
+    get:
+      tags:
+        - orders
+      summary: 'Read single order'
+      description: 'Read an Order'
+      operationId: OrderController.read
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+    put:
+      tags:
+        - orders
+      summary: 'Update single order'
+      description: 'Update an Order.'
+      operationId: OrderController.update
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+    delete:
+      tags:
+        - orders
+      summary: 'Delete single order'
+      description: 'Delete an order.'
+      operationId: OrderController.delete
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '204':
+          description: 'No content'
+  /api/products:
+    get:
+      tags:
+        - products
+      summary: 'Read all products'
+      operationId: ProductController.readAll
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceCollection'
+  '/api/products/{id}':
+    get:
+      tags:
+        - products
+      summary: 'Read products by Id'
+      description: 'Read by ID'
+      operationId: ProductController.readById
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResource'
+  /api/profile:
+    get:
+      tags:
+        - profile
+      summary: me
+      description: 'Get the authenticated user.'
+      operationId: ProfileController.me
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResource'
+      security:
+        -
+          BearerToken: []
+    delete:
+      tags:
+        - profile
+      summary: 'delete current user'
+      description: 'Delete the authenticated user.'
+      operationId: ProfileController.delete
+      responses:
+        '204':
+          description: 'No content'
+      security:
+        -
+          BearerToken: []
+  /api/profile/orders:
+    get:
+      tags:
+        - profile
+      summary: 'my orders'
+      description: "Get the authenticated user's orders."
+      operationId: ProfileController.myOrders
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResourceCollection'
+      security:
+        -
+          BearerToken: []
+  /api/cart/session:
+    get:
+      tags:
+        - cart/session
+      summary: 'Get a cart'
+      description: 'Get a cart'
+      operationId: SessionCartController.getCart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResource'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+    post:
+      tags:
+        - cart/session
+      summary: 'Create a new cart'
+      description: 'create a cart'
+      operationId: SessionCartController.createCart
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResource'
+        '422':
+          description: 'Unprocessable entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+    delete:
+      tags:
+        - cart/session
+      summary: 'Clear cart'
+      description: 'Clear cart'
+      operationId: SessionCartController.clearCart
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      security:
+        -
+          BearerToken: []
+  /api/cart/session/item:
+    post:
+      tags:
+        - cart/session
+      summary: 'Add item to cart'
+      description: 'Add item to cart'
+      operationId: SessionCartController.addCartItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartItemRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemResource'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+  '/api/cart/session/item/{id}':
+    get:
+      tags:
+        - cart/session
+      summary: 'Get cart item by id'
+      description: 'Get cart item'
+      operationId: SessionCartController.getCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItemResource'
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+    put:
+      tags:
+        - cart/session
+      summary: 'Update cart item'
+      description: 'Update cart item'
+      operationId: SessionCartController.updateCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+        -
+          name: method
+          in: query
+          required: true
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+    delete:
+      tags:
+        - cart/session
+      summary: 'Remove item from cart'
+      description: 'Remove item from cart'
+      operationId: SessionCartController.removeCartItem
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '204':
+          description: 'No content'
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+components:
+  schemas:
+    ValidationError:
+      properties:
+        message:
+          type: string
+          example: 'The given data was invalid.'
+        errors:
+          properties:
+            'key 1':
+              type: array
+              items:
+                type: string
+                example: 'Error message 1'
+            'key 2':
+              type: array
+              items:
+                type: string
+                example: 'Error message 2'
+          type: object
+      type: object
+    AdminLoginRequest:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: root@admin.com
+        password:
+          type: string
+          example: '123456'
+      type: object
+    LoginRequest:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          example: '123456'
+      type: object
+    SignupRequest:
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: 'John Doe'
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          example: '123456'
+      type: object
+    AddCartItemRequest:
+      required:
+        - product_id
+        - quantity
+        - cart_id
+      properties:
+        product_id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+      type: object
+    CreateOrderRequest:
+      required:
+        - firstName
+        - lastName
+        - email
+        - phoneNumber
+        - deliveryAddress
+        - products
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        phoneNumber:
+          type: string
+          example: 123-456-7890
+        products:
+          type: array
+          items:
+            properties:
+              id:
+                type: integer
+                example: 1
+              quantity:
+                type: integer
+                example: 1
+            type: object
+        deliveryAddress:
+          properties:
+            address1:
+              type: string
+              example: '123 Easy Street'
+            address2:
+              type: string
+              example: 'Apt. 309'
+            city:
+              type: string
+              example: Youngstown
+            state:
+              type: string
+              example: OH
+            zipCode:
+              type: integer
+              example: 123456
+          type: object
+      type: object
+    AccessTokenResource:
+      properties:
+        access_token:
+          type: string
+          example: 6|JeXDJdhmaQN4Nl3T3DaD9sE20PoPrdUx15W0m2eA
+        type:
+          type: string
+          example: bearer
+      type: object
+    AdminResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Admin
+        email:
+          type: string
+          example: root@admin.com
+        avatar_url:
+          type: string
+          example: 'https://someplace.com/avatar'
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-08-27T16:14:46.000000Z'
+      type: object
+    CartItemResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+        cart_id:
+          type: integer
+          example: 1
+        product_id:
+          type: integer
+          example: 1
+      type: object
+    CartItemResourceCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/CartItemResource'
+    CartResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 1
+        session_id:
+          type: string
+          example: '12345'
+        total:
+          type: number
+          format: float
+          example: 100
+        cartItems:
+          $ref: '#/components/schemas/CartItemResourceCollection'
+      type: object
+    DeliveryAddressResource:
+      properties:
+        address1:
+          type: string
+          example: '123 Easy Street'
+        address2:
+          type: string
+          example: 'Apt. 309'
+        city:
+          type: string
+          example: Youngstown
+        state:
+          type: string
+          example: OH
+        zipCode:
+          type: integer
+          example: 123456
+      type: object
+    LineItemResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+        product:
+          $ref: '#/components/schemas/ProductResource'
+      type: object
+    LineItemResourceCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/LineItemResource'
+    LoggedInAdminResource:
+      properties:
+        admin:
+          $ref: '#/components/schemas/AdminResource'
+        token:
+          $ref: '#/components/schemas/AccessTokenResource'
+      type: object
+    OrderResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        email:
+          type: string
+          example: john@example.com
+        phoneNumber:
+          type: string
+          example: 123-456-7890
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-08-27T16:14:46.000000Z'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddressResource'
+        lineItems:
+          $ref: '#/components/schemas/LineItemResourceCollection'
+      type: object
+    OrderResourceCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrderResource'
+    ProductResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'AMD - Ryzen 7 7800X3D 8-Core - 16-Thread 4.2 GHz (5.0 GHz Max Boost) Socket AM5 Unlocked Desktop Processor - Black'
+        model:
+          type: string
+          example: 100-100000910WOF
+        price:
+          type: number
+          format: float
+          example: 369
+        category:
+          type: string
+          example: CPU
+        product_image:
+          type: string
+          example: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6537/6537139cv11d.jpg;maxHeight=200;maxWidth=300'
+        description:
+          type: string
+          example: "AMD Ryzen 7 7800X3D The dominant gaming processor with AMD 3D V-Cache technology for even more game performance.  Whatever the setting, whatever the resolution, lead your team to victory with this incredible gaming processor.  Plus, enjoy the benefits of next-gen AMD 3D V-Cache technology for lower latency and even more game performance.\_"
+        specifications:
+          type: array
+          items:
+            type: string
+          example:
+            - 'Socket AM5 (LGA 1718)'
+            - '4.2 gigahertz'
+            - '5 gigahertz'
+            - 8-core
+            - '16'
+            - 'Yes'
+      type: object
+    ProductResourceCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProductResource'
+    UserResource:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'John Doe'
+        email:
+          type: string
+          example: john@example.com
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-08-27T16:14:46.000000Z'
+      type: object
+  securitySchemes:
+    BearerToken:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
+tags:
+  -
+    name: auth
+    description: 'User authentication'
+  -
+    name: profile
+    description: 'User profile'
