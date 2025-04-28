@@ -74,7 +74,7 @@ function App() {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/confirmation" element={<Confirmation />} />
-            <Route path=":category/:productID" element={<ProductPages />} />
+            <Route path=":category/:id" element={<ProductPages />} />
             <Route path="/help" element={<Help />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/about-us" element={<AboutUs />} />
